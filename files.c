@@ -11,14 +11,10 @@ mg_write(int filedes, const void *buf, mg_size_t nbyte)
    */
   asm (
     "movl $4, %%eax\n\t"
-    "movl %1, %%ebx\n\t"
-    "movl %2, %%ecx\n\t"
-    "movl %3, %%edx\n\t"
     "int $0x80\n\t"
-    "movl %%eax, %0"
-    : "=r" (ret)
-    : "g" (filedes), "g" (buf), "g" (nbyte)
-    : "%eax", "%ebx", "%ecx", "%edx"
+    : "=a" (ret)
+    : "b" (filedes), "c" (buf), "d" (nbyte)
+    : "%eax"
     );
 
   return ret;

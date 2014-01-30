@@ -9,10 +9,9 @@ mg_exit(int status)
    */
   asm (
       "movl $1, %%eax\n\t"
-      "movl %0, %%ebx\n\t"
       "int $0x80"
       : /* no output */
-      : "r" (status)
+      : "b" (status)
       : "%eax", "%ebx"
   );
 }
