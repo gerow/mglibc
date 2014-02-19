@@ -15,3 +15,4 @@ mg_test: main.c files.o exit.o
 clean:
 	rm *.o
 	rm mg_test
+
